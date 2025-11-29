@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clan War Settings"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attacks needed to GAIN life:"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/etGain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Default: 14"
+        android:inputType="number"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Attacks to LOSE life (at or below):"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/etLose"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Default: 4"
+        android:inputType="number"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Maximum Lives:"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/etMaxLives"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Default: 3"
+        android:inputType="number"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clan Tag:"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="4dp"/>
+
+    <EditText
+        android:id="@+id/etClanTag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="#XXXXXX"
+        android:inputType="number"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Made with love by HetSchaapje &lt;3"
+        android:layout_marginTop="300dp"
+        android:layout_marginBottom="2dp"/>
+
+
+</LinearLayout>
