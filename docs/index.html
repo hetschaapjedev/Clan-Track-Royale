@@ -3,87 +3,301 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Download My App</title>
+  <title>Clan Track Royale — Download</title>
+  <meta name="description" content="Clan Track Royale — track clan members' performance in clan wars and river races. By HetSchaapje." />
+  <meta property="og:title" content="Clan Track Royale" />
+  <meta property="og:description" content="Track clan members' performance during clan war / river races. Developed by HetSchaapje." />
+  <meta name="theme-color" content="#0b1220" />
 
   <style>
-    :root {
-      --bg: #f2f5f9;
-      --card-bg: #ffffffcc;
-      --text: #1a1a1a;
-      --accent: #4b6bfb; /* button color */
+    :root{
+      --bg-1:#071019;
+      --bg-2:#0e1624;
+      --card:#0f1720cc;
+      --muted:#9aa6b2;
+      --accent:#6ea8ff;
+      --accent-2:#7b61ff;
+      --glass: rgba(255,255,255,0.04);
+      --glass-2: rgba(255,255,255,0.02);
     }
-
-    * { box-sizing:border-box; margin:0; padding:0; }
-
-    body {
-      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:#e6eef6;
+      background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 100%);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
       display:flex;
-      justify-content:center;
       align-items:center;
-      min-height:100vh;
-      padding:20px;
+      justify-content:center;
+      padding:28px;
     }
 
-    .card {
-      text-align:center;
-      background:var(--card-bg);
-      backdrop-filter:blur(12px);
-      border-radius:22px;
-      padding:48px 36px;
-      box-shadow:0 8px 30px rgba(0,0,0,0.08);
-      max-width:430px;
-      width:100%;
-      animation:fadeIn 0.6s ease;
+    /* decorative blurred floating shapes behind the card */
+    .bg-blob{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:0;
+      overflow:hidden;
     }
+    .blob{
+      position:absolute;
+      filter: blur(36px) saturate(120%);
+      opacity:0.9;
+      transform: translate3d(0,0,0);
+      mix-blend-mode: screen;
+    }
+    .blob.a{ width:420px;height:420px; left:-80px; top:-80px; background: radial-gradient(circle at 20% 20%, rgba(123,97,255,0.36), transparent 30%), radial-gradient(circle at 80% 80%, rgba(106,168,255,0.22), transparent 30%); }
+    .blob.b{ width:520px;height:520px; right:-120px; bottom:-140px; background: radial-gradient(circle at 30% 30%, rgba(110,168,255,0.12), transparent 30%), radial-gradient(circle at 70% 70%, rgba(123,97,255,0.18), transparent 28%); filter: blur(60px); opacity:0.75; }
+
+    /* main card */
+    .card{
+      position:relative;
+      z-index:1;
+      width:100%;
+      max-width:980px;
+      border-radius:18px;
+      padding:34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: 0 10px 40px rgba(2,6,23,0.6);
+      display:grid;
+      grid-template-columns: 1fr 360px;
+      gap:28px;
+      align-items:center;
+      backdrop-filter: blur(8px) saturate(120%);
+    }
+
+    /* left: content */
+    .hero {
+      padding-right:6px;
+    }
+    .logo {
+      width:70px; height:70px; border-radius:14px;
+      display:inline-grid; place-items:center;
+      background: linear-gradient(135deg,var(--accent),var(--accent-2));
+      box-shadow: 0 6px 24px rgba(79, 90, 255, 0.18), inset 0 -6px 18px rgba(255,255,255,0.06);
+      margin-bottom:14px;
+      flex-shrink:0;
+    }
+    .logo svg { width:42px; height:42px; display:block; }
 
     h1 {
-      font-size:26px;
-      margin-bottom:10px;
-      color:var(--text);
-      font-weight:600;
+      margin:0;
+      font-size:28px;
+      letter-spacing:-0.02em;
+      color: #f7fbff;
+    }
+    .subtitle {
+      margin-top:8px;
+      color:var(--muted);
+      font-size:15px;
     }
 
-    p {
-      font-size:16px;
-      color:#555;
-      margin-bottom:32px;
+    .desc {
+      margin-top:18px;
+      color:#cfe1ff;
+      font-size:15px;
+      line-height:1.5;
+      max-width:64ch;
     }
 
-    .btn {
-      display:inline-block;
-      background:var(--accent);
-      padding:14px 28px;
-      border-radius:16px;
-      color:#fff;
-      font-weight:600;
+    .features {
+      margin-top:18px;
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .feature {
+      background:var(--glass);
+      border-radius:10px;
+      padding:10px 12px;
+      font-size:13px;
+      color:var(--muted);
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      border:1px solid rgba(255,255,255,0.02);
+    }
+    .feature b { color:#e9f3ff; font-weight:600; font-size:13px; }
+
+    .meta {
+      margin-top:18px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* right: download panel */
+    .panel{
+      background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.012));
+      border-radius:14px;
+      padding:20px;
+      border:1px solid rgba(255,255,255,0.03);
+      display:flex;
+      flex-direction:column;
+      align-items:stretch;
+      gap:14px;
+      min-height:200px;
+      justify-content:center;
+    }
+
+    .ver { font-size:13px; color:var(--muted); }
+    .big-btn {
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:12px;
       text-decoration:none;
-      font-size:17px;
-      transition:all .25s ease;
+      padding:14px 18px;
+      border-radius:12px;
+      font-weight:700;
+      font-size:16px;
+      color:#0b1220;
+      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+      box-shadow: 0 10px 28px rgba(107,131,255,0.12);
+      border:none;
+      cursor:pointer;
+    }
+    .big-btn:active{ transform: translateY(1px); }
+    .secondary {
+      background:transparent;
+      border-radius:10px;
+      padding:10px 12px;
+      font-size:13px;
+      color:var(--muted);
+      text-decoration:none;
+      display:inline-flex;
+      justify-content:center;
+      align-items:center;
+      gap:8px;
+      border:1px solid rgba(255,255,255,0.02);
     }
 
-    .btn:hover {
-      opacity:0.88;
-      transform:translateY(-2px);
-      box-shadow:0 8px 20px rgba(0,0,0,0.12);
+    footer {
+      grid-column: 1 / -1;
+      margin-top:8px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--muted);
+      font-size:13px;
     }
 
-    @keyframes fadeIn {
-      from { opacity:0; transform:translateY(12px); }
-      to   { opacity:1; transform:translateY(0); }
+    /* responsive */
+    @media (max-width:880px){
+      .card{ grid-template-columns: 1fr; padding:22px; }
+      .panel { order:-1; }
+      .logo { margin-bottom:10px; }
+      .desc { max-width:100% }
+      footer { flex-direction:column; gap:10px; align-items:flex-start; }
+    }
+
+    /* subtle focus-visible for accessibility */
+    a:focus-visible, button:focus-visible {
+      outline: 3px solid rgba(110,168,255,0.18);
+      outline-offset: 3px;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
 
-  <div class="card">
-    <h1>Get the App</h1>
-    <p>Tap below to download the latest version.</p>
-    
-    <a class="btn" href="https://github.com/hetschaapjedev/Clan-Track-Royale/releases/latest/download/Clan-Track-Royale.apk" download>
-      Download APK
-    </a>
+  <!-- decorative blurred background blobs -->
+  <div class="bg-blob" aria-hidden="true">
+    <div class="blob a"></div>
+    <div class="blob b"></div>
   </div>
 
+  <main class="card" role="main">
+    <!-- left -->
+    <section class="hero" aria-labelledby="app-title">
+      <div style="display:flex; gap:14px; align-items:center;">
+        <div class="logo" aria-hidden="true">
+          <!-- simple clan / shield glyph -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M12 2l8 3v5c0 5-3.6 9.8-8 11-4.4-1.2-8-6-8-11V5l8-3z" fill="white" opacity=".95"/>
+            <path d="M9.5 11.5c0-1 1.2-2.6 2.5-2.6s2.5 1.6 2.5 2.6c0 2-2.5 4.6-2.5 4.6s-2.5-2.6-2.5-4.6z" fill="#0b1220"/>
+          </svg>
+        </div>
+
+        <div>
+          <h1 id="app-title">Clan Track Royale</h1>
+          <div class="subtitle">Keep tabs on clan members' performance during Clan Wars & River Races</div>
+        </div>
+      </div>
+
+      <p class="desc">
+        Clan Track Royale helps clan leaders and members monitor performance, compare war contributions, and summarize river race results — all in a compact app built for speed and privacy. Designed for clans that want clear, private insights during competition.
+      </p>
+
+      <div class="features" aria-hidden="true">
+        <div class="feature"><span>•</span><div><b>Real-time</b><div style="color:var(--muted); font-size:12px">quick in-session tracking</div></div></div>
+        <div class="feature"><span>•</span><div><b>Simple</b><div style="color:var(--muted); font-size:12px">no account required</div></div></div>
+        <div class="feature"><span>•</span><div><b>Private</b><div style="color:var(--muted); font-size:12px">local data & direct sharing</div></div></div>
+      </div>
+
+      <div class="meta" style="margin-top:14px;">
+        Developer: <strong>HetSchaapje</strong> · Lightweight APK · Works offline
+      </div>
+    </section>
+
+    <!-- right: download panel -->
+    <aside class="panel" aria-labelledby="download-heading">
+      <div>
+        <div class="ver" id="download-heading">Latest release</div>
+        <!-- Show a version label — edit manually or replace with dynamic text later -->
+        <div style="font-weight:700; font-size:18px; margin-top:6px;">v1.0 &middot; Clan Track Royale</div>
+      </div>
+
+      <div style="display:flex; gap:10px; margin-top:6px; align-items:center;">
+        <a class="big-btn"
+           id="downloadBtn"
+           href="https://github.com/hetschaapjedev/Clan-Track-Royale/releases/latest/download/Clan-Track-Royale.apk"
+           download>
+          <!-- simple download icon (SVG) -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M12 3v10" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M8 11l4 4 4-4" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M21 21H3" stroke="#0b1220" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Download APK
+        </a>
+
+        <!-- secondary: link to releases page (open in new tab) -->
+        <a class="secondary" id="releasesLink" href="https://github.com/YOUR_USERNAME/YOUR_REPO/releases" target="_blank" rel="noopener">
+          Release notes
+        </a>
+      </div>
+
+      <div style="color:var(--muted); font-size:13px; margin-top:8px;">
+        Note: Android will request permission to install apps from unknown sources. Make sure you trust the source before installing.
+      </div>
+    </aside>
+
+    <footer>
+      <div>Made with care by <strong>HetSchaapje</strong></div>
+      <div style="color:var(--muted)">&middot; For clan leaders & members · Clan Track Royale</div>
+    </footer>
+  </main>
+
+  <script>
+    
+    document.getElementById('downloadBtn').addEventListener('click', function(){
+      // No autoplay or forced download. We just hint on mobile.
+      try {
+        if (/Mobi|Android/i.test(navigator.userAgent)) {
+          // Quick visual feedback: replace text for a second
+          const el = this;
+          const old = el.innerHTML;
+          el.innerHTML = 'Starting download…';
+          setTimeout(()=> el.innerHTML = old, 2200);
+        }
+      } catch(e){}
+    });
+
+  </script>
 </body>
 </html>
