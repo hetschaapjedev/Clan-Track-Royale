@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="nl"> <head>
+<html lang="nl">
+<head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Clan Track Royale — Download</title>
@@ -13,11 +14,17 @@
       --teal2:#2E474A;
       --glass: rgba(255,255,255,0.03);
       --muted: rgba(230,238,246,0.6);
-      --card-border: rgba(255,255,255,0.06); /* Iets meer dekkend */
+      --card-border: rgba(255,255,255,0.06);
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    html {
+      box-sizing: border-box;
+    }
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    /* FIX 2: Body mag nu groeien (scrollen) */
     body{
       margin:0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -27,20 +34,23 @@
         radial-gradient(700px 380px at 90% 90%, rgba(58,84,87,0.08), transparent 12%),
         linear-gradient(180deg, #071018 0%, #08121a 60%);
       display:flex;
+      flex-direction: column; /* Belangrijk voor verticale flow */
       align-items:center;
       justify-content:center;
-      padding:28px;
+      min-height: 100vh; 
+      
     }
 
+  
     .card{
       position:relative;
       z-index:1;
-      width:94vw;
+      width: calc(100% - 56px); /* Ruimte voor margin */
       max-width:1200px;
+      margin: 28px; 
       min-height:64vh;
       border-radius:18px;
       padding:36px;
-      /* Iets meer dekkende 'glass' achtergrond */
       background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid var(--card-border);
       box-shadow: 0 18px 60px rgba(3,6,12,0.7);
@@ -51,7 +61,6 @@
       backdrop-filter: blur(8px) saturate(120%);
     }
 
-    /* Achtergrond blobs blijven ongewijzigd */
     .bg {
       position:fixed;
       inset:0;
@@ -92,7 +101,6 @@
       width:86px;
       height:86px;
       border-radius:14px;
-      /* Iets meer dekkend */
       background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       display:grid;
       place-items:center;
@@ -111,27 +119,26 @@
     }
     h1 {
       margin:0;
-      font-size:34px; /* Groter voor meer impact */
+      font-size:34px;
       font-weight: 800;
       color: #f7fbff;
       letter-spacing:-0.02em;
     }
     .subtitle {
       margin-top:6px;
-      color: rgba(206, 182, 144, 0.85); /* Gebruik van --gold accent */
-      font-size:16px; /* Iets groter */
+      color: rgba(206, 182, 144, 0.85);
+      font-size:16px;
       font-weight: 500;
     }
 
     .desc {
       margin-top:20px;
-      color: var(--muted); /* Consistent met --muted variabele */
+      color: var(--muted);
       font-size:15px;
-      line-height:1.6; /* Betere leesbaarheid */
+      line-height:1.6;
       max-width:70ch;
     }
 
-    /* Verbeterde 'features' sectie */
     .features {
       margin-top:24px;
       display:flex;
@@ -143,13 +150,13 @@
       border-radius:10px;
       padding:10px 14px;
       display:inline-flex;
-      flex-direction: column; /* Stapel titel en subtitel */
+      flex-direction: column;
       gap: 4px;
       align-items: flex-start;
       border:1px solid var(--card-border);
     }
     .feature strong {
-      color:var(--gold); /* Gebruik van --gold accent */
+      color:var(--gold);
       font-weight: 600;
       font-size: 14px;
     }
@@ -158,11 +165,10 @@
       font-size: 13px;
     }
     
-    /* Download paneel */
     .panel{
       background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
       border-radius:14px;
-      padding:24px; /* Iets meer padding */
+      padding:24px;
       border:1px solid rgba(255,255,255,0.05);
       display:flex;
       flex-direction:column;
@@ -179,7 +185,6 @@
       margin-top:6px;
     }
 
-    /* Verbeterde 'Call to Action' knop */
     .big-btn {
       display:inline-flex;
       justify-content:center;
@@ -191,25 +196,23 @@
       font-weight:800;
       font-size:16px;
       color:#0b1220;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.1); /* Betere leesbaarheid */
-      /* Mooiere gradient en subtiele rand */
+      text-shadow: 0 1px 2px rgba(0,0,0,0.1);
       background: linear-gradient(110deg, #CEB690, #A8916C);
       border: 1px solid rgba(206,182,144,0.3);
       box-shadow: 0 12px 34px rgba(46,71,74,0.16);
       cursor:pointer;
-      transition: all 0.2s ease-out; /* Transitie voor hover */
+      transition: all 0.2s ease-out;
     }
     .big-btn:hover {
-      background: linear-gradient(110deg, #ddc7a1, #b9a27c); /* Lichter op hover */
+      background: linear-gradient(110deg, #ddc7a1, #b9a27c);
       box-shadow: 0 14px 40px rgba(46,71,74,0.2);
-      transform: translateY(-2px); /* Lift effect */
+      transform: translateY(-2px);
     }
     .big-btn:active{ 
       transform: translateY(1px); 
       box-shadow: 0 8px 30px rgba(46,71,74,0.18);
     }
 
-    /* Verbeterde secundaire knop */
     .secondary {
       background:transparent;
       border-radius:10px;
@@ -222,7 +225,7 @@
       align-items:center;
       gap:8px;
       border:1px solid rgba(255,255,255,0.04);
-      transition: all 0.2s ease-out; /* Transitie voor hover */
+      transition: all 0.2s ease-out;
     }
     .secondary:hover {
       background: var(--glass);
@@ -233,16 +236,15 @@
     .note {
       color:var(--muted);
       font-size:13px;
-      line-height:1.45; /* Iets meer ruimte */
-      margin-top: 8px; /* Ruimte boven de 'note' */
+      line-height:1.45;
+      margin-top: 8px;
     }
 
-    /* Verbeterde footer */
     footer {
       grid-column: 1 / -1;
       margin-top:16px;
       padding-top: 16px;
-      border-top: 1px solid var(--card-border); /* Nette scheidingslijn */
+      border-top: 1px solid var(--card-border);
       display:flex;
       justify-content:space-between;
       align-items:center;
@@ -257,18 +259,15 @@
       font-weight: 600;
     }
 
-    /* --- MOBIELE STIJLEN --- */
+    /* --- MOBIELE STIJLEN (MET FIX) --- */
     @media (max-width:980px){
-      body {
-        padding: 16px; /* Minder padding op mobiel */
-      }
       .card{ 
         grid-template-columns: 1fr; 
-        padding: 28px; /* Consistente padding */
+        padding: 24px; /* Iets minder padding voor mobiel */
         gap: 28px;
+        margin: 16px; /* Kleinere margin op mobiel */
+        width: calc(100% - 32px); /* Aanpassen aan margin */
       }
-      /* verwijder 'order: -1'.
-         Het paneel komt nu NA de hero, wat logisch is. */
       
       .logo-box { width:80px; height:80px; }
       .logo-box img { max-width: 72px; max-height: 72px; }
@@ -277,7 +276,7 @@
       .subtitle { font-size: 15px; }
 
       .features {
-        flex-direction: column; /* Features netjes stapelen */
+        flex-direction: column;
         align-items: flex-start;
         gap: 10px;
       }
@@ -290,15 +289,14 @@
 
       footer { 
         flex-direction:column; 
-        gap: 8px; /* Iets minder gap */
-        align-items: center; /* Centreren voor strakke look */
+        gap: 8px;
+        align-items: center;
         text-align: center;
         margin-top: 8px;
         padding-top: 12px;
       }
     }
 
-    /* Focus stijlen blijven ongewijzigd */
     a:focus-visible, button:focus-visible {
       outline: 3px solid rgba(206,182,144,0.18);
       outline-offset: 3px;
