@@ -34,7 +34,7 @@ import java.net.URLEncoder
 class MainActivity : AppCompatActivity() {
 
     // --- CONFIG ---
-    private val API_TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6ImU0ZGVkMmJjLTBhYWEtNGM5MS05NGJkLTc5MjRjNTg2NGFjYSIsImlhdCI6MTc2NDI4MTc1MSwic3ViIjoiZGV2ZWxvcGVyLzZjYjAyMDYwLTJiM2QtZmFiZS02ZWViLTYzZTgyYTA0NWJiOCIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI0NS43OS4yMTguNzkiXSwidHlwZSI6ImNsaWVudCJ9XX0.JLDdLSgajlJeqiYqFJjfHSQoPnb_iyXuEt_4qm4TmeVmuOe3XgN7dFCQQjcj0amExaWcYcLgrj6It0lo1Ky2DA"
+    private val API_TOKEN = "Bearer YOUR_API_TOKEN"
 
     private lateinit var viewPager: ViewPager2
     private lateinit var api: ClashRoyaleApi
