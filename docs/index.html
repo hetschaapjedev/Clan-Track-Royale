@@ -4,14 +4,14 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Clan Track Royale — Download</title>
-  <meta name="description" content="Clan Track Royale — track clan members' performance during clan wars and river races. By HetSchaapje." />
+  <meta name="description" content="Clan Track Royale — track clan members' performance during clan wars and river races." />
   <meta name="theme-color" content="#2E474A" />
   <style>
     :root{
-      --dark:#353D40;    /* primary dark */
-      --gold:#CEB690;    /* accent/gold */
-      --teal1:#3A5457;   /* secondary */
-      --teal2:#2E474A;   /* deep teal */
+      --dark:#353D40;
+      --gold:#CEB690;
+      --teal1:#3A5457;
+      --teal2:#2E474A;
       --glass: rgba(255,255,255,0.03);
       --muted: rgba(230,238,246,0.6);
       --card-border: rgba(255,255,255,0.04);
@@ -33,7 +33,6 @@
       padding:28px;
     }
 
-    /* larger, more covering card */
     .card{
       position:relative;
       z-index:1;
@@ -52,7 +51,6 @@
       backdrop-filter: blur(8px) saturate(120%);
     }
 
-    /* blurred decorative background behind the card (fills whole viewport) */
     .bg {
       position:fixed;
       inset:0;
@@ -66,15 +64,23 @@
       opacity:0.95;
       mix-blend-mode: screen;
     }
-    .bg .b1{ width:760px; height:760px; left:-140px; top:-190px; background: radial-gradient(circle at 30% 30%, rgba(206,182,144,0.12), transparent 30%), radial-gradient(circle at 70% 70%, rgba(58,84,87,0.06), transparent 30%); transform: rotate(-6deg); }
-    .bg .b2{ width:860px; height:860px; right:-220px; bottom:-200px; background: radial-gradient(circle at 25% 25%, rgba(58,84,87,0.14), transparent 30%), radial-gradient(circle at 70% 70%, rgba(46,71,74,0.08), transparent 30%); transform: rotate(8deg); }
+    .bg .b1{
+      width:760px; height:760px; left:-140px; top:-190px;
+      background: radial-gradient(circle at 30% 30%, rgba(206,182,144,0.12), transparent 30%),
+                  radial-gradient(circle at 70% 70%, rgba(58,84,87,0.06), transparent 30%);
+      transform: rotate(-6deg);
+    }
+    .bg .b2{
+      width:860px; height:860px; right:-220px; bottom:-200px;
+      background: radial-gradient(circle at 25% 25%, rgba(58,84,87,0.14), transparent 30%),
+                  radial-gradient(circle at 70% 70%, rgba(46,71,74,0.08), transparent 30%);
+      transform: rotate(8deg);
+    }
 
-    /* left column (content) */
     .hero {
       padding-right:8px;
     }
 
-    /* logo area - drop your logo.png next to index.html or change src */
     .logo-wrap {
       display:flex;
       gap:16px;
@@ -140,13 +146,6 @@
     }
     .feature b { color:#f3f9ff; font-weight:700; font-size:13px; }
 
-    .meta {
-      margin-top:18px;
-      color:var(--muted);
-      font-size:13px;
-    }
-
-    /* right column: download panel */
     .panel{
       background: linear-gradient(180deg, rgba(255,255,255,0.018), rgba(255,255,255,0.01));
       border-radius:14px;
@@ -177,8 +176,9 @@
       border-radius:12px;
       font-weight:800;
       font-size:16px;
-      color:var(--dark);
-      background: linear-gradient(90deg, var(--gold), var(--teal1));
+      color:#0b1220;
+      /* updated darker gold fade */
+      background: linear-gradient(90deg, #CEB690, #8F7A52);
       box-shadow: 0 12px 34px rgba(46,71,74,0.16);
       border:none;
       cursor:pointer;
@@ -215,7 +215,6 @@
       font-size:13px;
     }
 
-    /* responsive */
     @media (max-width:980px){
       .card{ grid-template-columns: 1fr; padding:22px; }
       .panel { order:-1; }
@@ -225,7 +224,6 @@
       footer { flex-direction:column; gap:10px; align-items:flex-start; }
     }
 
-    /* focus styles for accessibility */
     a:focus-visible, button:focus-visible {
       outline: 3px solid rgba(206,182,144,0.18);
       outline-offset: 3px;
@@ -241,12 +239,10 @@
   </div>
 
   <main class="card" role="main" aria-labelledby="app-title">
-    <!-- left: text + logo slot -->
     <section class="hero" aria-labelledby="app-title">
       <div class="logo-wrap">
-
         <div class="logo-box" aria-hidden="true">
-          <img id="logoImg" src="icon.png" alt="Clan Track Royale logo" />
+          <img id="logoImg" src="logo.png" alt="Clan Track Royale logo" />
         </div>
 
         <div class="title-block">
@@ -260,21 +256,18 @@
       </p>
 
       <div class="features" aria-hidden="true">
-        <div class="feature"><b>Live tracking</b><div style="color:var(--muted); font-size:12px; margin-left:6px">match-time stats</div></div>
-        <div class="feature"><b>Leaderboard</b><div style="color:var(--muted); font-size:12px; margin-left:6px">quick comparison</div></div>
-        <div class="feature"><b>Clan-first</b><div style="color:var(--muted); font-size:12px; margin-left:6px">designed for teams</div></div>
+        <div class="feature"><b>Live tracking</b><span style="color:var(--muted); font-size:12px; margin-left:6px">match-time stats</span></div>
+        <div class="feature"><b>Leaderboard</b><span style="color:var(--muted); font-size:12px; margin-left:6px">quick comparison</span></div>
+        <div class="feature"><b>Clan-first</b><span style="color:var(--muted); font-size:12px; margin-left:6px">designed for teams</span></div>
       </div>
-
     </section>
 
-    <!-- right: download panel -->
     <aside class="panel" aria-labelledby="download-heading">
       <div>
         <div class="ver" id="download-heading">Latest release</div>
         <div class="app-name">v1.0 · Clan Track Royale</div>
       </div>
 
-      <!-- UPDATED: your release download link is embedded below -->
       <div style="display:flex; gap:10px; margin-top:6px; align-items:center;">
         <a class="big-btn"
            id="downloadBtn"
@@ -288,13 +281,13 @@
           Download APK
         </a>
 
-        <a class="secondary" id="releasesLink" href="https://github.com/hetschaapjedev/Clan-Track-Royale/releases" target="_blank" rel="noopener">
+        <a class="secondary" href="https://github.com/hetschaapjedev/Clan-Track-Royale/releases" target="_blank" rel="noopener">
           Release notes
         </a>
       </div>
 
       <div class="note">
-        <strong>Install note:</strong> Android will prompt to allow installations from unknown sources when installing an APK directly. Only install if you trust the source. The app uses an API for live data; ensure your device has internet when using Clan Track Royale.
+        <strong>Install note:</strong> Android may prompt to allow installations from unknown sources when installing an APK directly. Only install if you trust the source. The app uses an API for live data; ensure your device has internet when using Clan Track Royale.
       </div>
     </aside>
 
@@ -305,7 +298,6 @@
   </main>
 
   <script>
-    // small UX: show brief feedback on mobile when pressing download
     document.getElementById('downloadBtn').addEventListener('click', function(){
       try {
         if (/Mobi|Android/i.test(navigator.userAgent)) {
@@ -316,7 +308,6 @@
         }
       } catch(e){}
     });
-
   </script>
 </body>
 </html>
